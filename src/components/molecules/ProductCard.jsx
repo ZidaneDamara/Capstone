@@ -27,7 +27,7 @@ export default function ProductCard({ product }) {
   );
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden group">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden group ">
       {/* Image Section */}
       <Link to={`/product/${product.id}`} className="block relative">
         <div className="w-full pt-[100%] relative overflow-hidden">
