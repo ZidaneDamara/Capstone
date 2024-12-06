@@ -20,6 +20,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.token = null;
       localStorage.removeItem("token");
+      localStorage.removeItem("cart"); // Clear cart from local storage on logout
     },
   },
   extraReducers: (builder) => {
