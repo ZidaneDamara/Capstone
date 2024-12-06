@@ -1,9 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const loadCartFromStorage = () => {
+  try {
+    const serializedCart = localStorage.getItem("cart");
+    if (serializedCart === null) {
+      return [];
+    }
+    return JSON.parse(serializedCart);
+  } catch (err) {
+    console.error("Error loading cart from storage:", err);
+    return [];
+  }
+};
+
+const saveCartToStorage = (items) => {
+  try {
+    const serializedCart = JSON.stringify(items);
+    localStorage.setItem("cart", serializedCart);
+  } catch (err) {
+    console.error("Error saving cart to storage:", err);
+  }
+};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: [],
+    items: loadCartFromStorage(),
   },
   reducers: {
     addToCart: (state, action) => {
@@ -15,6 +37,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...product, quantity });
       }
+      saveCartToStorage(state.items);
     },
     updateQuantity: (state, action) => {
       const { productId, quantity } = action.payload;
@@ -22,16 +45,28 @@ const cartSlice = createSlice({
       if (item) {
         item.quantity = quantity;
       }
+      saveCartToStorage(state.items);
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
+      saveCartToStorage(state.items);
     },
     clearCart: (state) => {
       state.items = [];
+      saveCartToStorage(state.items);
+    },
+    setCartItems: (state, action) => {
+      state.items = action.payload;
+      saveCartToStorage(state.items);
     },
   },
 });
 
-export const { addToCart, updateQuantity, removeFromCart, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  updateQuantity,
+  removeFromCart,
+  clearCart,
+  setCartItems,
+} = cartSlice.actions;
 export default cartSlice.reducer;
