@@ -6,6 +6,7 @@ import anime from "animejs";
 import { UilUser, UilLock, UilGoogle } from "@iconscout/react-unicons";
 import Button from "../components/atoms/Button";
 import toast from "react-hot-toast";
+import Input from "../components/atoms/Input";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -73,14 +74,10 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="text-sm font-medium text-gray-700">
-                Username or email
-              </label>
               <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UilUser className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
+                <Input
+                  label="Username or email"
+                  icon={UilUser}
                   type="text"
                   value={credentials.username}
                   onChange={(e) =>
@@ -89,20 +86,11 @@ export default function Login() {
                       username: e.target.value,
                     }))
                   }
-                  className="pl-10 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 h-[50px]"
                 />
-              </div>
-            </div>
 
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UilLock className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
+                <Input
+                  label="Password"
+                  icon={UilLock}
                   type="password"
                   value={credentials.password}
                   onChange={(e) =>
@@ -111,7 +99,6 @@ export default function Login() {
                       password: e.target.value,
                     }))
                   }
-                  className="pl-10 block w-full border-slate-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 h-[50px]"
                 />
               </div>
               <div className="mt-1 text-right">
@@ -126,7 +113,7 @@ export default function Login() {
 
             <Button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3"
+              className="w-full text-black py-3"
               disabled={status === "loading"}
             >
               {status === "loading" ? "Signing in..." : "Sign in"}
@@ -141,13 +128,14 @@ export default function Login() {
               </div>
             </div>
 
-            <button
-              type="button"
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            <Button
+              type="submit"
+              className="w-full text-black py-3 flex items-center justify-center gap-2"
+              disabled={status === "loading"}
             >
-              <UilGoogle className="w-5 h-5" />
-              Sign in with Google
-            </button>
+              <UilGoogle />
+              {status === "loading" ? "Signing in..." : "Sign in with Google"}
+            </Button>
           </form>
 
           <p className="mt-8 text-center text-sm text-gray-600">

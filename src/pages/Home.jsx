@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import ProductCard from "../components/molecules/ProductCard";
 import PromotionalCarousel from "../components/molecules/PromotionalCarousel";
+import Brand from "../components/molecules/Brand";
 import WeeklySalesCard, {
   weeklySales,
 } from "../components/molecules/WeeklySalesCard";
@@ -20,11 +21,11 @@ export default function Home() {
   return (
     <div className="bg-white">
       <PromotionalCarousel />
+      <Brand />
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900 flex justify-center">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900 flex items-center justify-center">
           Products
         </h2>
-
         {filteredProducts.length === 0 ? (
           <p className="mt-4 text-gray-500">
             No products found matching your search.
@@ -37,8 +38,8 @@ export default function Home() {
           </div>
         )}
 
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900 flex justify-center mt-16 mb-6">
-          Top Sales Product This Week
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900 mt-16 mb-6 flex items-center justify-center">
+          Brand Pilihan Minggu Ini
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {weeklySales.map((sale, index) => (
