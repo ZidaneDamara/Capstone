@@ -26,17 +26,17 @@ export const weeklySales = [
     link: "/brand/converse",
   },
   {
-    brand: "Brand 4",
+    brand: "Nike",
     offer: "Special Offer",
     link: "/brand/brand4",
   },
   {
-    brand: "Brand 5",
+    brand: "Alexander Christie",
     offer: "Limited Time Deal",
     link: "/brand/brand5",
   },
   {
-    brand: "Brand 6",
+    brand: "Under Armor",
     offer: "Exclusive Discount",
     link: "/brand/brand6",
   },
