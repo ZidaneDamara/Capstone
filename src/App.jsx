@@ -6,6 +6,7 @@ import Layout from "./components/templates/Layout";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import CategoryPage from "./pages/CategoryPage";
 import PrivateRoute from "./components/atoms/PrivateRoute";
@@ -29,6 +30,14 @@ export default function App() {
           element={
             <PublicRoute>
               <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute>
+              <Register />
             </PublicRoute>
           }
         />
