@@ -1,13 +1,37 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const loadStockFromStorage = () => {
+  try {
+    const serializedStock = localStorage.getItem("productStock");
+    if (serializedStock === null) {
+      return {};
+    }
+    return JSON.parse(serializedStock);
+  } catch (err) {
+    console.error("Error loading stock from storage:", err);
+    return {};
+  }
+};
+
+const saveStockToStorage = (stock) => {
+  try {
+    const serializedStock = JSON.stringify(stock);
+    localStorage.setItem("productStock", serializedStock);
+  } catch (err) {
+    console.error("Error saving stock to storage:", err);
+  }
+};
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
     const response = await axios.get("https://fakestoreapi.com/products");
+    const storedStock = loadStockFromStorage();
     return response.data.map((product) => ({
       ...product,
-      stock: 20, // Add default stock
+      stock:
+        storedStock[product.id] !== undefined ? storedStock[product.id] : 20,
     }));
   }
 );
@@ -25,6 +49,11 @@ const productSlice = createSlice({
       const product = state.items.find((item) => item.id === productId);
       if (product) {
         product.stock -= quantity;
+        const newStock = state.items.reduce((acc, item) => {
+          acc[item.id] = item.stock;
+          return acc;
+        }, {});
+        saveStockToStorage(newStock);
       }
     },
   },
