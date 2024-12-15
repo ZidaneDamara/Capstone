@@ -42,7 +42,7 @@ export const weeklySales = [
   },
 ];
 
-export default function WeeklySalesCard({ brand, offer, link, index }) {
+const WeeklySalesCard = ({ brand, offer, link, index }) => {
   return (
     <Link to={link} className="block">
       <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -63,4 +63,6 @@ export default function WeeklySalesCard({ brand, offer, link, index }) {
       </div>
     </Link>
   );
-}
+};
+
+export default WeeklySalesCard;

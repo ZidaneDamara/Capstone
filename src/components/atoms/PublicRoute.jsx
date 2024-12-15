@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-export default function PublicRoute({ children }) {
+const PublicRoute = ({ children }) => {
   const token = useSelector((state) => state.auth.token);
 
   if (token) {
@@ -9,4 +9,6 @@ export default function PublicRoute({ children }) {
   }
 
   return children;
-}
+};
+
+export default PublicRoute;

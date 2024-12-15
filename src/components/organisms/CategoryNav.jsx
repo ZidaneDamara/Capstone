@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
-export default function CategoryNav() {
+const CategoryNav = () => {
   const [categories, setCategories] = useState([]);
   const location = useLocation();
 
@@ -68,4 +68,6 @@ export default function CategoryNav() {
       </div>
     </nav>
   );
-}
+};
+
+export default CategoryNav;

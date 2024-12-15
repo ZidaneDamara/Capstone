@@ -74,7 +74,7 @@ const brands = [
   },
 ];
 
-export default function Brand() {
+const Brand = () => {
   const [startIndex, setStartIndex] = useState(0);
   const visibleBrands = 6;
 
@@ -141,4 +141,6 @@ export default function Brand() {
       </div>
     </div>
   );
-}
+};
+
+export default Brand;

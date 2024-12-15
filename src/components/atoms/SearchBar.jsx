@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Search } from "lucide-react";
 import { setSearchQuery } from "../../store/slices/searchSlice";
 
-export default function SearchBar({ placeholder = "Search for items..." }) {
+const SearchBar = ({ placeholder = "Search for items..." }) => {
   const [localQuery, setLocalQuery] = useState("");
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ export default function SearchBar({ placeholder = "Search for items..." }) {
     <form onSubmit={handleSearch} className="relative w-full max-w-xl">
       <input
         type="text"
-        className="w-full px-4 py-2 pl-4 pr-10 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:border-slate-500"
+        className="w-full px-4 py-2 pl-4 pr-10 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:border-blue-500"
         placeholder={placeholder}
         value={localQuery}
         onChange={(e) => setLocalQuery(e.target.value)}
@@ -29,4 +29,6 @@ export default function SearchBar({ placeholder = "Search for items..." }) {
       </button>
     </form>
   );
-}
+};
+
+export default SearchBar;

@@ -6,7 +6,7 @@ import { Heart } from "lucide-react";
 import Button from "../atoms/Button";
 import toast from "react-hot-toast";
 
-export default function ProductCard({ product }) {
+const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector((state) => state.auth.token);
@@ -78,4 +78,6 @@ export default function ProductCard({ product }) {
       </div>
     </div>
   );
-}
+};
+
+export default ProductCard;

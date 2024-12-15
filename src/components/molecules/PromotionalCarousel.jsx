@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function PromotionalCarousel() {
+const PromotionalCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = ["/Carousel.jpg", "/Carousel2.jpg", "/Carousel3.jpg"];
@@ -17,7 +17,7 @@ export default function PromotionalCarousel() {
   }, [images.length]);
 
   useEffect(() => {
-    const intervalId = setInterval(nextSlide, 5000); // Auto-play every 5 seconds
+    const intervalId = setInterval(nextSlide, 5000);
     return () => clearInterval(intervalId);
   }, [nextSlide]);
 
@@ -69,4 +69,6 @@ export default function PromotionalCarousel() {
       </div>
     </div>
   );
-}
+};
+
+export default PromotionalCarousel;

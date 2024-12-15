@@ -10,7 +10,7 @@ import { Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export default function Cart() {
+const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.items);
@@ -160,4 +160,6 @@ export default function Cart() {
       </div>
     </div>
   );
-}
+};
+
+export default Cart;

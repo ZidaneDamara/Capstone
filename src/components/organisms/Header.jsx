@@ -6,7 +6,7 @@ import SearchBar from "../atoms/SearchBar";
 import { logout } from "../../store/slices/authSlice";
 import { setCartItems } from "../../store/slices/cartSlice";
 
-export default function Header() {
+const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const cartItems = useSelector((state) => state.cart.items);
   const isLoggedIn = useSelector((state) => !!state.auth.token);
@@ -85,4 +85,6 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;

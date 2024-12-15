@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductCard from "../components/molecules/ProductCard";
 
-export default function CategoryPage() {
+const CategoryPage = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,4 +48,6 @@ export default function CategoryPage() {
       </div>
     </div>
   );
-}
+};
+
+export default CategoryPage;

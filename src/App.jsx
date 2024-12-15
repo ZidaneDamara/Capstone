@@ -12,7 +12,7 @@ import CategoryPage from "./pages/CategoryPage";
 import PrivateRoute from "./components/atoms/PrivateRoute";
 import PublicRoute from "./components/atoms/PublicRoute";
 
-export default function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,4 +52,6 @@ export default function App() {
       </Route>
     </Routes>
   );
-}
+};
+
+export default App;
