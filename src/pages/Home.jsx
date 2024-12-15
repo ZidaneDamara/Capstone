@@ -17,8 +17,8 @@ const Home = () => {
 
   if (status === "loading") {
     return (
-      <div className="flex-grow flex items-center justify-center">
-        Loading...
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
       </div>
     );
   }
@@ -45,7 +45,7 @@ const Home = () => {
           )}
 
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 mt-16 mb-6 text-center">
-            Top Sales This Week
+            Brand Pilihan Minggu Ini
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {weeklySales.map((sale, index) => (
