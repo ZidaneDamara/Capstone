@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ShoppingBag, User, LogOut } from "lucide-react";
-import SearchBar from "../atoms/SearchBar";
-import { logout } from "../../store/slices/authSlice";
-import { setCartItems } from "../../store/slices/cartSlice";
+import SearchBar from "../elements/SearchBar";
+import { logout } from "../../store/reducers/authSlice";
+import { setCartItems } from "../../store/reducers/cartSlice";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);

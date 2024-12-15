@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import ProductCard from "../components/molecules/ProductCard";
-import PromotionalCarousel from "../components/molecules/PromotionalCarousel";
-import Brand from "../components/molecules/Brand";
+import ProductCard from "../components/elements/ProductCard";
+import PromotionalCarousel from "../components/promotion/PromotionalCarousel";
+import Brand from "../components/promotion/Brand";
 import WeeklySalesCard, {
   weeklySales,
-} from "../components/molecules/WeeklySalesCard";
-import Footer from "../components/organisms/Footer";
+} from "../components/promotion/WeeklySalesCard";
+import Footer from "../components/templates/Footer";
 
 const Home = () => {
   const { items: products, status } = useSelector((state) => state.products);
@@ -45,7 +45,7 @@ const Home = () => {
           )}
 
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 mt-16 mb-6 text-center">
-            Brand Pilihan Minggu Ini
+            Top Sales This Week
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {weeklySales.map((sale, index) => (

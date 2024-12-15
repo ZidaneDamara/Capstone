@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "../organisms/Header";
-import CategoryNav from "../organisms/CategoryNav";
+import Header from "./Header";
+import CategoryNav from "./CategoryNav";
+import Footer from "./Footer";
 
 const Layout = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const Layout = () => {
       <Header />
       {!isAuthPage && <CategoryNav />}
       <Outlet />
+      <Footer />
     </div>
   );
 };

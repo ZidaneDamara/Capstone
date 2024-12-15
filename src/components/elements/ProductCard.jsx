@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../../store/slices/cartSlice";
+import { addToCart } from "../../store/reducers/cartSlice";
 import { Heart } from "lucide-react";
-import Button from "../atoms/Button";
+import Button from "./Button";
 import toast from "react-hot-toast";
 
 const ProductCard = ({ product }) => {

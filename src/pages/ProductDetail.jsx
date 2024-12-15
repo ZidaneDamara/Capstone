@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../store/slices/cartSlice";
-import Button from "../components/atoms/Button";
+import { addToCart } from "../store/reducers/cartSlice";
+import Button from "../components/elements/Button";
 import { Star, Truck, ArrowLeft, Plus, Minus } from "lucide-react";
 import toast from "react-hot-toast";
 

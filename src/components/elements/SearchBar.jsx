@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Search } from "lucide-react";
-import { setSearchQuery } from "../../store/slices/searchSlice";
+import { setSearchQuery } from "../../store/reducers/searchSlice";
 
 const SearchBar = ({ placeholder = "Search for items..." }) => {
   const [localQuery, setLocalQuery] = useState("");

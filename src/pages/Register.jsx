@@ -3,8 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { UilUser, UilEnvelope, UilLock } from "@iconscout/react-unicons";
 import toast from "react-hot-toast";
-import Button from "../components/atoms/Button";
-import Input from "../components/atoms/Input";
+import Button from "../components/elements/Button";
+import Input from "../components/elements/Input";
 
 const Register = () => {
   const [formData, setFormData] = useState({

@@ -3,9 +3,9 @@ import {
   updateQuantity,
   removeFromCart,
   clearCart,
-} from "../store/slices/cartSlice";
-import { updateStock } from "../store/slices/productSlice";
-import Button from "../components/atoms/Button";
+} from "../store/reducers/cartSlice";
+import { updateStock } from "../store/reducers/productSlice";
+import Button from "../components/elements/Button";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";

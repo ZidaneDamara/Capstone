@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../store/slices/authSlice";
+import { login } from "../store/reducers/authSlice";
 import anime from "animejs";
 import { UilUser, UilLock, UilGoogle } from "@iconscout/react-unicons";
-import Button from "../components/atoms/Button";
+import Button from "../components/elements/Button";
 import toast from "react-hot-toast";
-import Input from "../components/atoms/Input";
+import Input from "../components/elements/Input";
 
 const Login = () => {
   const dispatch = useDispatch();
