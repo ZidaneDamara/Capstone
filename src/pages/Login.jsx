@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/slices/authSlice";
 import anime from "animejs";
 import { UilUser, UilLock, UilGoogle } from "@iconscout/react-unicons";
@@ -8,7 +8,7 @@ import Button from "../components/atoms/Button";
 import toast from "react-hot-toast";
 import Input from "../components/atoms/Input";
 
-export default function Login() {
+const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
@@ -19,14 +19,13 @@ export default function Login() {
 
   // Refs for animation
   const containerRef = useRef(null);
-  const floatingElementsRef = useRef(null);
 
   useEffect(() => {
     anime({
       targets: containerRef.current,
       opacity: [0, 1],
       translateY: [20, 0],
-      duration: 1000,
+      duration: 1500,
       easing: "easeOutCubic",
     });
   }, []);
@@ -140,15 +139,17 @@ export default function Login() {
 
           <p className="mt-8 text-center text-sm text-gray-600">
             Don't have an account?{" "}
-            <a
-              href="#"
+            <Link
+              to="/register"
               className="font-medium text-blue-600 hover:text-blue-500"
             >
               Sign up now
-            </a>
+            </Link>
           </p>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Login;

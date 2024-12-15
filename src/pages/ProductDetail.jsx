@@ -6,7 +6,7 @@ import Button from "../components/atoms/Button";
 import { Star, Truck, ArrowLeft, Plus, Minus } from "lucide-react";
 import toast from "react-hot-toast";
 
-export default function ProductDetail() {
+const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -138,4 +138,6 @@ export default function ProductDetail() {
       </div>
     </div>
   );
-}
+};
+
+export default ProductDetail;

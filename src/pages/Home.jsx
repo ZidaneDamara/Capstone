@@ -7,7 +7,7 @@ import WeeklySalesCard, {
 } from "../components/molecules/WeeklySalesCard";
 import Footer from "../components/organisms/Footer";
 
-export default function Home() {
+const Home = () => {
   const { items: products, status } = useSelector((state) => state.products);
   const searchQuery = useSelector((state) => state.search.query);
 
@@ -57,4 +57,6 @@ export default function Home() {
       <Footer />
     </>
   );
-}
+};
+
+export default Home;

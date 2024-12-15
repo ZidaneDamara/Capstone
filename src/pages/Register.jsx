@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { UilUser, UilEnvelope, UilLock } from "@iconscout/react-unicons";
 import toast from "react-hot-toast";
+import Button from "../components/atoms/Button";
+import Input from "../components/atoms/Input";
 
-export default function Register() {
+const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -65,142 +67,89 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Create your account
-        </h2>
-      </div>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-md w-full">
+        <div className="p-8">
+          <div className="mb-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-800">
+              Create your account
+            </h3>
+          </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email address
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UilEnvelope className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                  placeholder="you@example.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <Input
+              label="Email address"
+              icon={UilEnvelope}
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+
+            <Input
+              label="Username"
+              icon={UilUser}
+              type="text"
+              name="username"
+              placeholder="johndoe"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+
+            <Input
+              label="Password"
+              icon={UilLock}
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <div className="grid grid-cols-2 gap-4">
+              <Input
+                label="First name"
+                type="text"
+                name="firstname"
+                placeholder="John"
+                value={formData.name.firstname}
+                onChange={handleChange}
+                required
+              />
+
+              <Input
+                label="Last name"
+                type="text"
+                name="lastname"
+                placeholder="Doe"
+                value={formData.name.lastname}
+                onChange={handleChange}
+                required
+              />
             </div>
 
-            <div>
-              <label
-                htmlFor="username"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Username
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UilUser className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  autoComplete="username"
-                  required
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                  placeholder="johndoe"
-                  value={formData.username}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UilLock className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                  placeholder="••••••••"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="flex space-x-4">
-              <div className="flex-1">
-                <label
-                  htmlFor="firstname"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  First name
-                </label>
-                <input
-                  type="text"
-                  name="firstname"
-                  id="firstname"
-                  autoComplete="given-name"
-                  required
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  value={formData.name.firstname}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="flex-1">
-                <label
-                  htmlFor="lastname"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Last name
-                </label>
-                <input
-                  type="text"
-                  name="lastname"
-                  id="lastname"
-                  autoComplete="family-name"
-                  required
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  value={formData.name.lastname}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Register
-              </button>
-            </div>
+            <Button type="submit" className="w-full text-black py-3">
+              Create Account
+            </Button>
           </form>
+
+          <p className="mt-8 text-center text-sm text-gray-600">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="font-medium text-blue-600 hover:text-blue-500"
+            >
+              Sign in
+            </Link>
+          </p>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Register;
