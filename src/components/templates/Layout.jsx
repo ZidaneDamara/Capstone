@@ -13,7 +13,7 @@ const Layout = () => {
       <Header />
       {!isAuthPage && <CategoryNav />}
       <Outlet />
-      <Footer />
+      {!isAuthPage && <Footer />}
     </div>
   );
 };

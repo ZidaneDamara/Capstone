@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/reducers/cartSlice";
 import Button from "../components/elements/Button";
 import { Star, Truck, ArrowLeft, Plus, Minus } from "lucide-react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+
+  // Add useEffect to scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const product = useSelector((state) =>
     state.products.items.find((p) => p.id === parseInt(id))
@@ -21,25 +26,29 @@ const ProductDetail = () => {
     return <div>Product not found</div>;
   }
 
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity > product.stock) {
+      toast.error(`Only ${product.stock} items available`);
+      return;
+    }
+    if (newQuantity < 1) {
+      toast.error("Quantity cannot be less than 1");
+      return;
+    }
+    setQuantity(newQuantity);
+  };
+
   const handleAddToCart = () => {
     if (!token) {
       navigate("/login");
       return;
     }
 
-    if (quantity < 1) {
-      toast.error("Quantity must be at least 1");
-      return;
-    }
-
-    if (quantity > product.stock) {
-      toast.error("Not enough stock available");
-      return;
-    }
-
     dispatch(addToCart({ product, quantity }));
     toast.success("Added to cart!");
   };
+
+  const isOverStock = quantity > product.stock;
 
   return (
     <div className="bg-white">
@@ -106,24 +115,31 @@ const ProductDetail = () => {
                   Quantity
                 </label>
                 <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  onClick={() => handleQuantityChange(quantity - 1)}
                   className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
                 >
                   <Minus className="h-4 w-4" />
                 </button>
                 <span className="mx-4 font-medium">{quantity}</span>
                 <button
-                  onClick={() =>
-                    setQuantity(Math.min(product.stock, quantity + 1))
-                  }
+                  onClick={() => handleQuantityChange(quantity + 1)}
                   className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
                 >
                   <Plus className="h-4 w-4" />
                 </button>
+                {isOverStock && (
+                  <p className="text-red-500 text-xs ml-2">
+                    Only {product.stock} available
+                  </p>
+                )}
               </div>
             </div>
             <div className="mt-8">
-              <Button onClick={handleAddToCart} className="w-full">
+              <Button
+                onClick={handleAddToCart}
+                className="w-full"
+                disabled={isOverStock}
+              >
                 Add to Cart
               </Button>
             </div>

@@ -12,8 +12,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    username: "johnd",
+    password: "m38rmF$",
   });
   const { status, error } = useSelector((state) => state.auth);
 
@@ -128,7 +128,7 @@ const Login = () => {
             </div>
 
             <Button
-              type="submit"
+              type="button"
               className="w-full text-black py-3 flex items-center justify-center gap-2"
               disabled={status === "loading"}
             >
