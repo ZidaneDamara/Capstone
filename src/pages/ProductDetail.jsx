@@ -12,7 +12,6 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 
-  // Add useEffect to scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

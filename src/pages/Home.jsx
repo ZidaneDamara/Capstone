@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import ProductCard from "../components/elements/ProductCard";
 import PromotionalCarousel from "../components/promotion/PromotionalCarousel";
 import Brand from "../components/promotion/Brand";
@@ -8,6 +9,10 @@ import WeeklySalesCard, {
 import Footer from "../components/templates/Footer";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { items: products, status } = useSelector((state) => state.products);
   const searchQuery = useSelector((state) => state.search.query);
 
